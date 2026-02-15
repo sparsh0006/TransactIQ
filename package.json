@@ -1,0 +1,22 @@
+{
+  "name": "injective-compat-api",
+  "version": "1.0.0",
+  "description": "Injective Protocol Compatibility Layer API - Translate EVM to Injective",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test:api": "bash test.sh"
+
+  },
+  "keywords": ["injective", "ethereum", "evm", "translation", "defi", "blockchain"],
+  "author": "sparsh",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "ethers": "^6.9.0",
+    "express-rate-limit": "^7.1.5"
+  }
+}
