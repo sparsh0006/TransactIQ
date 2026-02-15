@@ -1,13 +1,8 @@
-Here's a professional, hackathon-winning README:
-
----
-
-```markdown
 <div align="center">
 
-# 🚀 Injective Protocol Compatibility Layer API
+# 🚀 TransactIQ
 
-### Seamlessly Translate EVM Transactions to Injective Protocol
+### Think EVM. Execute Injective.
 
 [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-4.18-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
@@ -15,7 +10,7 @@ Here's a professional, hackathon-winning README:
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
 <p align="center">
-  <strong>Bridge the gap between EVM and Injective ecosystems</strong>
+  <strong>Intelligent EVM → Injective Compatibility Layer API</strong>
 </p>
 
 [Features](#-features) •
@@ -30,72 +25,75 @@ Here's a professional, hackathon-winning README:
 
 ## 🎯 Problem Statement
 
-Developers migrating from Ethereum/EVM chains to Injective face significant challenges:
+Developers migrating from Ethereum and other EVM chains to Injective encounter structural differences:
 
 | Challenge | Impact |
-|-----------|--------|
-| 🔄 Different message formats | EVM calldata vs Cosmos messages |
-| 📊 Different trading models | AMM pools vs Orderbook |
-| 🔐 Different auth patterns | `approve()` vs `authz` module |
-| ⏱️ Steep learning curve | Weeks of research required |
+|------------|----------|
+| 🔄 Message formats | EVM calldata vs Cosmos SDK messages |
+| 📊 Trading model | AMM pools vs Orderbook exchange |
+| 🔐 Authorization model | `approve()` vs `authz` module |
+| ⏱️ Learning curve | Weeks of research and trial |
 
-## 💡 Our Solution
+---
 
-A **Translation Layer API** that instantly converts EVM transaction patterns to their Injective equivalents:
+## 💡 What is TransactIQ?
+
+**TransactIQ** is a deterministic translation API that converts EVM transaction patterns into Injective-compatible Cosmos SDK messages.
+
+It enables developers to:
+
+- Decode raw EVM calldata
+- Translate ERC-20 operations into Injective messages
+- Convert AMM swaps into orderbook market orders
+- Analyze compatibility before migration
+- Estimate migration complexity and cost savings
+
+---
+
+## 🧠 How It Works
 
 ```
 ┌─────────────────┐         ┌─────────────────┐         ┌─────────────────┐
-│   EVM Calldata  │   ──►   │  Translation    │   ──►   │    Injective    │
-│   or Intent     │         │     Engine      │         │    Messages     │
+│   EVM Calldata  │   ──►   │   TransactIQ    │   ──►   │    Injective    │
+│   or Intent     │         │  Translation    │         │    Messages     │
 └─────────────────┘         └─────────────────┘         └─────────────────┘
 ```
+
+TransactIQ:
+
+1. Extracts the function selector  
+2. Decodes ABI parameters  
+3. Matches patterns in the selector database  
+4. Maps to Injective message types  
+5. Returns structured Cosmos SDK message objects  
 
 ---
 
 ## ✨ Features
 
-<table>
-<tr>
-<td width="50%">
-
 ### 🔄 Smart Translation
-- Decode raw EVM calldata
-- Intent-based translation
-- Multi-step transaction handling
-- Automatic parameter mapping
-
-</td>
-<td width="50%">
+- Raw calldata decoding
+- Intent-based transaction support
+- Composite multi-step operations
+- Deterministic message generation
 
 ### 📊 Compatibility Analysis
 - Pattern recognition
-- Support level scoring
-- Workaround suggestions
-- Alternative recommendations
-
-</td>
-</tr>
-<tr>
-<td width="50%">
+- Direct / Partial / Unsupported scoring
+- Confidence metrics
+- Redesign recommendations
 
 ### 📈 Migration Planning
-- Effort estimation
-- Cost comparison (99% savings!)
-- Phase-by-phase roadmap
-- Blocker identification
-
-</td>
-<td width="50%">
+- Feature parity scoring
+- Effort estimation (hours range)
+- Cost comparison modeling
+- Phase-by-phase migration plan
 
 ### ⚡ Developer Experience
-- Simple REST API
-- Detailed error messages
-- Code snippet generation
-- Comprehensive documentation
-
-</td>
-</tr>
-</table>
+- Clean REST architecture
+- Predictable JSON responses
+- Clear error handling
+- Hackathon-ready deployment
 
 ---
 
@@ -104,64 +102,33 @@ A **Translation Layer API** that instantly converts EVM transaction patterns to 
 ### Prerequisites
 
 - Node.js 18+
-- npm or yarn
+- npm
 
 ### Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/injective-compat-api.git
-cd injective-compat-api
-
-# Install dependencies
+git clone https://github.com/yourusername/transactiq.git
+cd transactiq
 npm install
-
-# Start the server
 npm start
 ```
 
-### Verify Installation
+Server runs at:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 🔍 Health Check
 
 ```bash
 curl http://localhost:3000/api/v1/health
 ```
 
-**Expected Response:**
-```json
-{
-  "status": "healthy",
-  "version": "1.0.0",
-  "timestamp": "2026-02-03T..."
-}
-```
+Response:
 
----
-
-## 📡 API Reference
-
-### Base URL
-```
-http://localhost:3000/api/v1
-```
-
-### Endpoints Overview
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/health` | Health check |
-| `POST` | `/translate` | Translate EVM → Injective |
-| `POST` | `/compatibility` | Check pattern compatibility |
-| `POST` | `/migrate/estimate` | Estimate migration effort |
-
----
-
-### 1️⃣ Health Check
-
-```http
-GET /api/v1/health
-```
-
-**Response:**
 ```json
 {
   "status": "healthy",
@@ -172,57 +139,42 @@ GET /api/v1/health
 
 ---
 
-### 2️⃣ Translate EVM to Injective
+## 📡 API Reference
 
-```http
-POST /api/v1/translate
-Content-Type: application/json
+Base URL:
+
+```
+http://localhost:3000/api/v1
 ```
 
-#### Option A: Using Intent (Recommended)
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /health | Health check |
+| POST | /translate | Translate EVM → Injective |
+| POST | /compatibility | Pattern compatibility |
+| POST | /migrate/estimate | Migration complexity |
+
+---
+
+## 🔁 Translate Example
+
+### Request
 
 ```json
 {
   "input": {
     "type": "intent",
     "action": "transfer",
-    "params": {
-      "amount": "1000000000000000000"
-    }
+    "params": { "amount": "1000000000" }
   },
   "context": {
-    "senderAddress": "inj1sender...",
-    "recipientAddress": "inj1recipient..."
+    "senderAddress": "inj1abc",
+    "recipientAddress": "inj1xyz"
   }
 }
 ```
 
-#### Option B: Using Raw Calldata
-
-```json
-{
-  "input": {
-    "type": "calldata",
-    "data": "0xa9059cbb000000000000000000000000742d35cc6634c0532925a3b844bc9e7595f2bd730000000000000000000000000000000000000000000000000de0b6b3a7640000"
-  },
-  "context": {
-    "senderAddress": "inj1sender..."
-  }
-}
-```
-
-#### Supported Actions
-
-| Action | EVM Function | Injective Message |
-|--------|--------------|-------------------|
-| `transfer` | `transfer(address,uint256)` | `MsgSend` |
-| `approve` | `approve(address,uint256)` | `MsgGrant` |
-| `stake` | `stake(uint256)` | `MsgDelegate` |
-| `unstake` | `withdraw(uint256)` | `MsgUndelegate` |
-| `claim` | `getReward()` | `MsgWithdrawDelegatorReward` |
-| `swap` | `swapExactTokensForTokens(...)` | `MsgCreateSpotMarketOrder` |
-
-#### Response
+### Response
 
 ```json
 {
@@ -231,303 +183,140 @@ Content-Type: application/json
     "messages": [
       {
         "@type": "/cosmos.bank.v1beta1.MsgSend",
-        "from_address": "inj1sender...",
-        "to_address": "inj1recipient...",
-        "amount": [{ "denom": "inj", "amount": "1000000000000000000" }]
+        "from_address": "inj1abc",
+        "to_address": "inj1xyz",
+        "amount": [{ "denom": "inj", "amount": "1000000000" }]
       }
     ],
-    "explanation": "Transfer 1000000000000000000 tokens"
+    "explanation": "Transfer 1000000000 tokens"
   },
   "metadata": {
     "confidence": 0.98,
-    "matchType": "DIRECT",
-    "gasEstimate": {
-      "injectiveGas": "100000",
-      "injFee": "0.00005 INJ",
-      "savings": "~95% cheaper"
-    }
+    "matchType": "DIRECT"
   }
 }
 ```
 
 ---
 
-### 3️⃣ Check Compatibility
+## 🧪 Compatibility Example
 
-```http
-POST /api/v1/compatibility
-Content-Type: application/json
-```
-
-**Request:**
 ```json
 {
   "patterns": [
     "transfer(address,uint256)",
     "approve(address,uint256)",
-    "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)",
-    "addLiquidity(address,address,uint256,uint256,uint256,uint256,address,uint256)",
     "flashLoan(address,uint256)"
   ]
 }
 ```
 
-**Response:**
+Response:
+
 ```json
 {
   "success": true,
   "overallCompatibility": {
     "score": 57,
-    "status": "PARTIALLY_COMPATIBLE",
-    "summary": "3/5 supported"
-  },
-  "patterns": [
-    {
-      "pattern": "transfer(address,uint256)",
-      "status": "SUPPORTED",
-      "injectiveEquivalent": "/cosmos.bank.v1beta1.MsgSend",
-      "confidence": 0.98
-    },
-    {
-      "pattern": "flashLoan(address,uint256)",
-      "status": "UNSUPPORTED",
-      "notes": "Flash loans not supported"
-    }
-  ],
-  "recommendations": [
-    "Some patterns need workarounds",
-    "Unsupported patterns require redesign"
-  ]
+    "status": "PARTIALLY_COMPATIBLE"
+  }
 }
 ```
 
-#### Status Levels
-
-| Status | Meaning |
-|--------|---------|
-| ✅ `SUPPORTED` | Direct 1:1 mapping available |
-| ⚠️ `PARTIAL` | Supported with modifications |
-| ❌ `UNSUPPORTED` | No equivalent, requires redesign |
-
 ---
 
-### 4️⃣ Estimate Migration
+## 📊 Migration Estimate Example
 
-```http
-POST /api/v1/migrate/estimate
-Content-Type: application/json
-```
-
-**Request:**
 ```json
 {
   "contractAbi": [
-    { "type": "function", "name": "transfer", "inputs": [{"type": "address"}, {"type": "uint256"}] },
-    { "type": "function", "name": "stake", "inputs": [{"type": "uint256"}] },
-    { "type": "function", "name": "addLiquidity", "inputs": [{"type": "address"}, {"type": "uint256"}] }
+    { "type": "function", "name": "transfer", "inputs": [{ "type": "address" }, { "type": "uint256" }] },
+    { "type": "function", "name": "stake", "inputs": [{ "type": "uint256" }] }
   ]
 }
 ```
 
-**Response:**
-```json
-{
-  "success": true,
-  "summary": {
-    "feasibility": "MODERATE",
-    "estimatedEffort": {
-      "hours": { "min": 67, "max": 225 }
-    },
-    "featureParity": 75
-  },
-  "costComparison": {
-    "ethereum": { "monthlyEstimate": "$4,500 (30 gwei, 1000 tx/day)" },
-    "injective": { "monthlyEstimate": "$45" },
-    "savings": "~99% reduction"
-  },
-  "migrationPlan": [
-    { "phase": 1, "name": "Core Logic", "hours": 27 },
-    { "phase": 2, "name": "Integration", "hours": 23 },
-    { "phase": 3, "name": "Testing", "hours": 17 }
-  ],
-  "blockers": []
-}
-```
+Response includes:
+
+- Feasibility rating
+- Estimated effort (hours range)
+- Feature parity percentage
+- Cost comparison (~99% lower fees)
 
 ---
 
-## 📝 Examples
-
-### Example 1: Translate a Token Transfer
-
-```bash
-curl -X POST http://localhost:3000/api/v1/translate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "input": {
-      "type": "intent",
-      "action": "transfer",
-      "params": { "amount": "1000000000000000000" }
-    },
-    "context": {
-      "senderAddress": "inj1abc123",
-      "recipientAddress": "inj1xyz789"
-    }
-  }'
-```
-
-### Example 2: Translate Staking
-
-```bash
-curl -X POST http://localhost:3000/api/v1/translate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "input": {
-      "type": "intent",
-      "action": "stake",
-      "params": { "amount": "5000000000000000000" }
-    },
-    "context": {
-      "senderAddress": "inj1abc123",
-      "validator": "injvaloper1xyz"
-    }
-  }'
-```
-
-### Example 3: Decode Raw EVM Calldata
-
-```bash
-curl -X POST http://localhost:3000/api/v1/translate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "input": {
-      "type": "calldata",
-      "data": "0xa9059cbb000000000000000000000000742d35cc6634c0532925a3b844bc9e7595f2bd730000000000000000000000000000000000000000000000000de0b6b3a7640000"
-    },
-    "context": {
-      "senderAddress": "inj1abc123"
-    }
-  }'
-```
-
----
-
-## 🏗️ Architecture
+## 🏗 Architecture
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│                         API LAYER                                 │
-│                    Express.js + Middleware                        │
-├──────────────────────────────────────────────────────────────────┤
-│    /translate      │   /compatibility    │   /migrate/estimate   │
-├──────────────────────────────────────────────────────────────────┤
-│                     TRANSLATION ENGINE                            │
-│  ┌──────────────┐  ┌───────────────┐  ┌────────────────────┐    │
-│  │   Decoder    │  │    Pattern    │  │  Message Builder   │    │
-│  │  (ethers.js) │  │    Matcher    │  │  (Injective msgs)  │    │
-│  └──────────────┘  └───────────────┘  └────────────────────┘    │
-├──────────────────────────────────────────────────────────────────┤
-│                    SELECTOR DATABASE                              │
-│         Function signatures, mappings, confidence scores          │
-└──────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────┐
+│               API Layer                     │
+│              Express Server                 │
+├──────────────────────────────────────────────┤
+│   /translate  /compatibility  /migrate      │
+├──────────────────────────────────────────────┤
+│           Translation Engine                │
+│  - ABI Decoder (ethers.js)                  │
+│  - Selector Database                        │
+│  - Pattern Matcher                          │
+│  - Cosmos Message Builders                  │
+└──────────────────────────────────────────────┘
 ```
-
----
-
-## 🔧 Supported Translations
-
-| EVM Function | Injective Equivalent | Confidence | Status |
-|--------------|---------------------|------------|--------|
-| `transfer(address,uint256)` | `MsgSend` | 98% | ✅ Direct |
-| `approve(address,uint256)` | `MsgGrant` | 85% | ⚠️ Semantic |
-| `transferFrom(address,address,uint256)` | `MsgSend` + authz | 80% | ⚠️ Semantic |
-| `swapExactTokensForTokens(...)` | `MsgCreateSpotMarketOrder` | 90% | ⚠️ Semantic |
-| `swapExactETHForTokens(...)` | `MsgDeposit` + `MsgCreateSpotMarketOrder` | 85% | 🔄 Composite |
-| `stake(uint256)` | `MsgDelegate` | 95% | ✅ Direct |
-| `withdraw(uint256)` | `MsgUndelegate` | 95% | ✅ Direct |
-| `getReward()` | `MsgWithdrawDelegatorReward` | 95% | ✅ Direct |
-| `addLiquidity(...)` | ❌ | 0% | ❌ Unsupported |
-| `flashLoan(...)` | ❌ | 0% | ❌ Unsupported |
 
 ---
 
 ## 💰 Cost Comparison
 
-| Metric | Ethereum | Injective | Savings |
-|--------|----------|-----------|---------|
-| Avg Transaction Fee | $2-50 | $0.001 | ~99% |
-| Monthly (1000 tx/day) | $4,500 | $45 | 99% |
-| Block Time | ~12s | ~1s | 12x faster |
-| Finality | ~6 min | Instant | ∞ |
+| Metric | Ethereum | Injective |
+|--------|----------|------------|
+| Avg Tx Fee | $2–50 | ~$0.001 |
+| Monthly (1000 tx/day) | ~$4,500 | ~$45 |
+| Block Time | ~12s | ~1s |
+| Finality | ~6 min | Instant |
 
 ---
 
-## 🛣️ Roadmap
+## 🛣 Roadmap
 
-- [x] Core translation engine
-- [x] ERC-20 operations support
-- [x] Staking operations support
-- [x] Swap operations support
-- [x] Compatibility checker
+- [x] ERC-20 translation
+- [x] Staking support
+- [x] Swap mapping
+- [x] Compatibility scoring
 - [x] Migration estimator
-- [ ] Uniswap V3 support
-- [ ] Aave/Compound patterns
-- [ ] Web UI dashboard
-- [ ] SDK packages (TypeScript, Python)
-- [ ] Real-time market ID resolution
+- [ ] Dynamic market resolution
+- [ ] On-chain broadcast support
+- [ ] SDK packages (TS / Python)
+- [ ] Web dashboard
 
 ---
 
-## 🤝 Contributing
+## 🧩 Scope
 
-Contributions are welcome! Areas we need help:
+TransactIQ currently provides:
 
-- Adding more function selectors
-- Testing with real contracts
-- SDK development
-- Documentation improvements
+✔ Calldata decoding  
+✔ Semantic mapping  
+✔ Cosmos message construction  
+✔ Compatibility analytics  
 
-```bash
-# Fork the repo
-# Create your feature branch
-git checkout -b feature/amazing-feature
+It does not:
 
-# Commit your changes
-git commit -m 'Add amazing feature'
+✖ Broadcast transactions  
+✖ Sign with private keys  
+✖ Query live chain state  
 
-# Push to the branch
-git push origin feature/amazing-feature
-
-# Open a Pull Request
-```
+It functions as an intelligent off-chain translation layer.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- [Injective Protocol](https://injective.com/) - For building the future of DeFi
-- [ethers.js](https://docs.ethers.org/) - For EVM calldata decoding
-- Hackathon organizers and mentors
+MIT License
 
 ---
 
 <div align="center">
 
-**Built with ❤️ for the Injective Ecosystem**
-
-[⬆ Back to Top](#-injective-protocol-compatibility-layer-api)
+### TransactIQ  
+### Think EVM. Execute Injective.
 
 </div>
-```
-
----
-
-
-
-# TransactIQ
